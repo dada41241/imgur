@@ -23,7 +23,6 @@ handler = WebhookHandler(config['line_bot']['59e352af8b15a1efddee622ce3c31d81'])
 client_id = config['imgur_api']['18f064544f219ac']
 client_secret = config['imgur_api']['c33fdd2c822d20be16ea2eb691242616f4759733']
 album_id = config['imgur_api']['X0QL4']
-API_Get_Image = config['other_api']['API_Get_Image']
 
 
 @app.route("/callback", methods=['POST'])
@@ -49,8 +48,8 @@ def callback():
 def handle_message(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
-
-    if event.message.text == "早":
+    
+    if event.message.text == "抽":
         client = ImgurClient(client_id, client_secret)
         images = client.get_album_images(album_id)
         index = random.randint(0, len(images) - 1)
@@ -62,6 +61,7 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, image_message)
         return 0
+    
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run()
