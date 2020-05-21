@@ -21,7 +21,7 @@ config.read("config.ini")
 line_bot_api = LineBotApi(config['line_bot']['P7V+AiwPyztvIPr8EK+AlVWacCTa5FQWPNJs/0giVGt+0o985Srw35KwIYnIEPjqKgCVZomwbrcFt63vCUeUH9EPi2UwxqQ9XWraylX3/YHd/BPa/8W0wwZm36+XQ4LVuWAKhOopLbSrhHeprh9N7gdB04t89/1O/w1cDnyilFU='])
 handler = WebhookHandler(config['line_bot']['59e352af8b15a1efddee622ce3c31d81'])
 client_id = config['imgur_api']['18f064544f219ac']
-client_secret = config['imgur_api']['c33fdd2c822d20be16ea2eb691242616f4759733']
+client_secret = config['imgur_api']['0b9cf2461d29cb47ca12a4a7874ed03e1807a404']
 album_id = config['imgur_api']['X0QL4']
 API_Get_Image = config['other_api']['API_Get_Image']
 
