@@ -1,68 +1,75 @@
-import requests
-import re
-import random
-import configparser
-from bs4 import BeautifulSoup
+#from _future_ import print_function
+#from apiclient.discovery import build
+#from httplib2 import Http
+#from oauth2client import file, client, tools
+
+#import time
+#import re
+#import datetime
+#import random
+#import codecs
+#import sys
+#import json
+
 from flask import Flask, request, abort
-from imgurpython import ImgurClient
+from urllib.request import urlopen
+#from oauth2client.service_account import ServiceAccountCredentials
 
 from linebot import (
     LineBotApi, WebhookHandler
 )
 from linebot.exceptions import (
-    InvalidSignatureError
+    InvalidSignatureError,LineBotApiError
 )
+
+################################
+
 from linebot.models import *
 
 app = Flask(__name__)
-config = configparser.ConfigParser()
-config.read("config.ini")
 
-line_bot_api = LineBotApi(config['line_bot']['P7V+AiwPyztvIPr8EK+AlVWacCTa5FQWPNJs/0giVGt+0o985Srw35KwIYnIEPjqKgCVZomwbrcFt63vCUeUH9EPi2UwxqQ9XWraylX3/YHd/BPa/8W0wwZm36+XQ4LVuWAKhOopLbSrhHeprh9N7gdB04t89/1O/w1cDnyilFU='])
-handler = WebhookHandler(config['line_bot']['59e352af8b15a1efddee622ce3c31d81'])
-client_id = config['imgur_api']['18f064544f219ac']
-client_secret = config['imgur_api']['0b9cf2461d29cb47ca12a4a7874ed03e1807a404']
-album_id = config['imgur_api']['X0QL4']
-API_Get_Image = config['other_api']['API_Get_Image']
+# Channel Access Token
+line_bot_api = "你的Channel access token"')
+# Channel Secret
+handler = WebhookHandler('"你的Channel secret"')
 
-
+# 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
     # get X-Line-Signature header value
     signature = request.headers['X-Line-Signature']
-
     # get request body as text
     body = request.get_data(as_text=True)
-    # print("body:",body)
     app.logger.info("Request body: " + body)
-
     # handle webhook body
     try:
         handler.handle(body, signature)
     except InvalidSignatureError:
         abort(400)
+    return 'OK'
 
-    return 'ok'
-
-
+# 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    print("event.reply_token:", event.reply_token)
-    print("event.message.text:", event.message.text)
-    
-    if event.message.text == "抽":
-        client = ImgurClient(client_id, client_secret)
-        images = client.get_album_images(album_id)
-        index = random.randint(0, len(images) - 1)
-        url = images[index].link
-        image_message = ImageSendMessage(
-            original_content_url=url,
-            preview_image_url=url
-        )
-        line_bot_api.reply_message(
-            event.reply_token, image_message)
-        return 0
-    
+    print(event)
+    text=event.message.text
 
+    if (text=="Hi"):
+        reply_text = "Hello"
+        #Your user ID
+
+    elif(text=="你好"):
+        reply_text = "哈囉"
+    elif(text=="機器人"):
+        reply_text = "叫我嗎"
+    else:
+        reply_text = text
+#如果非以上的選項，就會學你說話
+
+    message = TextSendMessage(reply_text)
+    line_bot_api.reply_message(event.reply_token, message)
+
+import os
 if __name__ == "__main__":
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
