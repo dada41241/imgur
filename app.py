@@ -1,3 +1,11 @@
+
+import requests
+import re
+import random
+import configparser
+from bs4 import BeautifulSoup
+from imgurpython import ImgurClient
+
 from flask import Flask, request, abort
 
 
@@ -29,6 +37,11 @@ line_bot_api = LineBotApi('P7V+AiwPyztvIPr8EK+AlVWacCTa5FQWPNJs/0giVGt+0o985Srw3
 # Channel Secret
 
 handler = WebhookHandler('59e352af8b15a1efddee622ce3c31d81')
+client_id = config['imgur_api']['18f064544f219ac']
+client_secret = config['imgur_api']['c33fdd2c822d20be16ea2eb691242616f4759733']
+album_id = config['imgur_api']['X0QL4']
+API_Get_Image = config['other_api']['API_Get_Image']
+
 
 
 
@@ -71,7 +84,23 @@ def handle_message(event):
     message = TextSendMessage(text=event.message.text)
 
     line_bot_api.reply_message(event.reply_token, message)
-
+    
+def handle_message(event):
+    print("event.reply_token:", event.reply_token)
+    print("event.message.text:", event.message.text)
+    
+      if event.message.text == "imgur":
+        client = ImgurClient(client_id, client_secret)
+        images = client.get_album_images(album_id)
+        index = random.randint(0, len(images) - 1)
+        url = images[index].link
+        image_message = ImageSendMessage(
+            original_content_url=url,
+            preview_image_url=url
+        )
+        line_bot_api.reply_message(
+            event.reply_token, image_message)
+        return 0
 
 
 @app.route('/')
