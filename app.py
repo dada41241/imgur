@@ -92,12 +92,9 @@ def handle_message(event):
             preview_image_url=url
         )
         line_bot_api.reply_message(
-            event.reply_token, image_message)
+            event.reply_token, image_message, TextSendMessage(text="早安你好!!"))
         return 0  
-     if event.message.text == "早安":
-         line_bot_api.reply_message(
-         event.reply_token,
-         TextSendMessage(text="早安你好!!"))
+
 
 @app.route('/')
 
