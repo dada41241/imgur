@@ -93,10 +93,11 @@ def handle_message(event):
             original_content_url=url,
             preview_image_url=url
         )
+        mottos2 = [1, 2, 3, 4, 5]
         line_bot_api.reply_message(
             event.reply_token, [
                 image_message,
-                TextSendMessage(text="早安你好!!")
+                TextSendMessage(text=random.choice(mottos2))
             ])                               
         return 0
     
