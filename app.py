@@ -92,11 +92,25 @@ def handle_message(event):
             preview_image_url=url
         )
         line_bot_api.reply_message(
-            event.reply_token, image_message )
-        line_bot_api.reply_message(
-            event.reply_token, TextSendMessage(text="早安你好!!") )
+            event.reply_token, [
+                image_message,
+                TextSendMessage(text="早安你好!!"))
+        
+              
+                                
         return 0       
-
+    if event.message.text == "嘿嘿":
+        target_url = 'https://www.youtube.com/channel/UCeo3JwE3HezUWFdVcehQk9Q/videos'
+        rs = requests.session()
+        res = rs.get(target_url, verify=False)
+        soup = BeautifulSoup(res.text, 'html.parser')
+        seqs = ['https://www.youtube.com{}'.format(data.find('a')['href']) for data in soup.select('.yt-lockup-title')]
+        line_bot_api.reply_message(
+            event.reply_token, [
+                TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)]),
+                TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)])
+            ])
+        return 0
 
 @app.route('/')
 
