@@ -1,7 +1,6 @@
 
 import requests
 import re
-import choice
 from random import choice
 import configparser
 from bs4 import BeautifulSoup
