@@ -110,6 +110,15 @@ def handle_message(event):
                 TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)])
             ])
         return 0
+    
+       if event.message.text == "Mariona" 
+        mottos = ["you love me", "You don't love you",  ]
+        line_bot_api.reply_message(
+            event.reply_token, [
+                TextSendMessage(text=mottos[random.randint(0, len(mottos) - 1)]),
+                TextSendMessage(text=mottos[random.randint(0, len(mottos) - 1)])
+            ])
+        return 0
 
 @app.route('/')
 
