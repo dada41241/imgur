@@ -42,7 +42,7 @@ line_bot_api = LineBotApi('P7V+AiwPyztvIPr8EK+AlVWacCTa5FQWPNJs/0giVGt+0o985Srw3
 handler = WebhookHandler('59e352af8b15a1efddee622ce3c31d81')
 
 client = ImgurClient('18f064544f219ac', 'b17f2b3ef24f98c4e3cce9424ef0b1b7173ef642')
-album_id = 'mKFXEqB'
+
 
 
 
@@ -84,22 +84,32 @@ def handle_message(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
     
-    if event.message.text == "imgur":
+    if event.message.text == "早安":
         client = ImgurClient('18f064544f219ac', 'b17f2b3ef24f98c4e3cce9424ef0b1b7173ef642')
-        images = client.get_album_images('mKFXEqB')
+        images = client.get_album_images('qpPMzY9')
         index = random.randint(0, len(images) - 1)
         url = images[index].link
         image_message = ImageSendMessage(
             original_content_url=url,
             preview_image_url=url
         )
-        mottos2 = [1, 2, 3, 4, 5]
+        
         line_bot_api.reply_message(
-            event.reply_token, [
-                image_message,
-                TextSendMessage(text=random.choice(mottos2))
-            ])                               
+            event.reply_token, image_message)
+                                                        
         return 0
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     if event.message.text == "Mariona":
         from random import choice
