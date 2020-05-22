@@ -1,6 +1,7 @@
 
 import requests
 import re
+import random
 from random import choice
 import configparser
 from bs4 import BeautifulSoup
@@ -104,7 +105,7 @@ def handle_message(event):
         mottos2 = [1, 2, 3, 4, 5]
         line_bot_api.reply_message(
             event.reply_token, 
-                TextSendMessage(text=random.chioce(mottos2))
+                TextSendMessage(text=random.choice(mottos2))
         )
         return 0
     
