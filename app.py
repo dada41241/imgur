@@ -110,8 +110,14 @@ def handle_message(event):
                 TextSendMessage(text=random.chioce(mottos))
         )
         return 0
-    
-   
+    if event.message.text == "mariona":
+        mottos2 = ["you love me",
+                  "You don't love you"  
+        ]
+                          
+        message=TextSendMessage(text=random.chioce(mottos2))
+        line_bot_api.reply_message(event.reply_token,message)
+
 
 @app.route('/')
 
