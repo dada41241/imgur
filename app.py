@@ -100,7 +100,7 @@ def handle_message(event):
     
     if event.message.text == "Mariona" 
         mottos = ["you love me",
-                  "You don't love you",  
+                  "You don't love you"  
         ]
         line_bot_api.reply_message(
             event.reply_token, 
