@@ -102,8 +102,8 @@ def handle_message(event):
         mottos = ["you love me", "You don't love you",  ]
         line_bot_api.reply_message(
             event.reply_token, [
-                TextSendMessage(text=mottos[random.choice(1)]),
-                TextSendMessage(text=mottos[random.choice(1)])
+                TextSendMessage(text=random.chioce(mottos),
+                TextSendMessage(text=random.chioce(mottos)
             ])
         return 0
     
