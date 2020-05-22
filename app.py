@@ -3,7 +3,6 @@ import requests
 import re
 import random
 from random import choice
-from scipy import *
 import configparser
 from bs4 import BeautifulSoup
 
