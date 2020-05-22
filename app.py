@@ -98,20 +98,7 @@ def handle_message(event):
             ])                               
         return 0
     
-    if event.message.text == "嘿嘿":
-        target_url = 'https://www.youtube.com/playlist?list=FLc2pCs0Dog_Nw7oQYFlSxpg'
-        rs = requests.session()
-        res = rs.get(target_url, verify=False)
-        soup = BeautifulSoup(res.text, 'html.parser')
-        seqs = ['https://www.youtube.com{}'.format(data.find('a')['href']) for data in soup.select('.yt-lockup-title')]
-        line_bot_api.reply_message(
-            event.reply_token, [
-                TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)]),
-                TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)])
-            ])
-        return 0
-    
-       if event.message.text == "Mariona" 
+    if event.message.text == "Mariona" 
         mottos = ["you love me", "You don't love you",  ]
         line_bot_api.reply_message(
             event.reply_token, [
@@ -119,6 +106,8 @@ def handle_message(event):
                 TextSendMessage(text=mottos[random.randint(0, len(mottos) - 1)])
             ])
         return 0
+    
+   
 
 @app.route('/')
 
