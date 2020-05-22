@@ -103,7 +103,6 @@ def handle_message(event):
     
     if event.message.text == "Mariona":
         from random import choice
-        from scipy import *
         mottos2 = [1, 2, 3, 4, 5]
         line_bot_api.reply_message(
             event.reply_token, 
