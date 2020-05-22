@@ -99,7 +99,7 @@ def handle_message(event):
         return 0
     
     if event.message.text == "嘿嘿":
-        target_url = 'https://www.youtube.com/channel/UCeo3JwE3HezUWFdVcehQk9Q/videos'
+        target_url = 'https://www.youtube.com/playlist?list=FLc2pCs0Dog_Nw7oQYFlSxpg'
         rs = requests.session()
         res = rs.get(target_url, verify=False)
         soup = BeautifulSoup(res.text, 'html.parser')
