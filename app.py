@@ -98,7 +98,7 @@ def handle_message(event):
             ])                               
         return 0
     
-    if event.message.text == "Mariona" 
+    if event.message.text == "Mariona":
         mottos = ["you love me",
                   "You don't love you"  
         ]
