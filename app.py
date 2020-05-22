@@ -112,9 +112,10 @@ def handle_message(event):
         return 0
     
     
-    from random import choice
-        mottos2 = ["you love me", "You don't love you" ]
+        
     if event.message.text == "mariona":
+        from random import choice
+        mottos2 = [1, 2, 3, 4, 5]
         message=TextSendMessage(text=random.chioce(mottos2))
         line_bot_api.reply_message(event.reply_token,message)
 
