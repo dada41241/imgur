@@ -111,6 +111,7 @@ def handle_message(event):
         )
         return 0
     if event.message.text == "mariona":
+        from random import choice
         mottos2 = ["you love me",
                   "You don't love you"  
         ]
