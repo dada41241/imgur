@@ -33,11 +33,14 @@ config.read("config.ini")
 
 # Channel Access Token
 
-line_bot_api = LineBotApi('ㄅP7V+AiwPyztvIPr8EK+AlVWacCTa5FQWPNJs/0giVGt+0o985Srw35KwIYnIEPjqKgCVZomwbrcFt63vCUeUH9EPi2UwxqQ9XWraylX3/YHd/BPa/8W0wwZm36+XQ4LVuWAKhOopLbSrhHeprh9N7gdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('P7V+AiwPyztvIPr8EK+AlVWacCTa5FQWPNJs/0giVGt+0o985Srw35KwIYnIEPjqKgCVZomwbrcFt63vCUeUH9EPi2UwxqQ9XWraylX3/YHd/BPa/8W0wwZm36+XQ4LVuWAKhOopLbSrhHeprh9N7gdB04t89/1O/w1cDnyilFU=')
 
 # Channel Secret
 
 handler = WebhookHandler('59e352af8b15a1efddee622ce3c31d81')
+client_id = config['imgur_api']['18f064544f219ac']
+client_secret = config['imgur_api']['b17f2b3ef24f98c4e3cce9424ef0b1b7173ef642']
+album_id = config['imgur_api']['mKFXEqB']
 
 
 
