@@ -94,11 +94,10 @@ def handle_message(event):
         line_bot_api.reply_message(
             event.reply_token, [
                 image_message,
-                TextSendMessage(text="早安你好!!"))
-        
-              
-                                
-        return 0       
+                TextSendMessage(text="早安你好!!")
+            ])                               
+        return 0
+    
     if event.message.text == "嘿嘿":
         target_url = 'https://www.youtube.com/channel/UCeo3JwE3HezUWFdVcehQk9Q/videos'
         rs = requests.session()
