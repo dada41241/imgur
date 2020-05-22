@@ -28,7 +28,8 @@ from linebot.models import *
 
 app = Flask(__name__)
 
-
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 # Channel Access Token
 
