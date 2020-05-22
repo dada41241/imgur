@@ -2,8 +2,10 @@
 import requests
 import re
 import random
+from random import choice
 import configparser
 from bs4 import BeautifulSoup
+
 from imgurpython import ImgurClient
 
 from flask import Flask, request, abort
