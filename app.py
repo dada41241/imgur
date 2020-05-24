@@ -131,7 +131,7 @@ def handle_message(event):
             preview_image_url=url
         )
         imagemap_message = ImagemapSendMessage(
-        base_url='https://example.com/base',
+        base_url='https://hello888.space',
         alt_text='this is an imagemap',
         base_size=BaseSize(height=1040, width=1040),
         actions=[
