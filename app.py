@@ -104,13 +104,20 @@ def handle_message(event):
         images = client.get_album_images('k7Z38KG')
         index = random.randint(0, len(images) - 1)
         url = images[index].link
-        image_message = ImageSendMessage(
+        image_message1 = ImageSendMessage(
             original_content_url=url,
             preview_image_url=url
         )
-        
+        index = random.randint(0, len(images) - 1)
+        url = images[index].link
+        image_message2 = ImageSendMessage(
+            original_content_url=url,
+            preview_image_url=url
+        )
         line_bot_api.reply_message(
-            event.reply_token, image_message)
+            event.reply_token, [image_message1, image_message2])
+        
+        
                                                         
         return 0
     
