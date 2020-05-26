@@ -100,7 +100,7 @@ def handle_message(event):
         images = client.get_album_images('k7Z38KG')
         index = random.randint(0, len(images) - 1)
         url = images[index].link
-        image_message1 = ImageSendMessage(
+        image_message1 = VideoSendMessage(
             original_content_url=url,
             preview_image_url=url
         )
