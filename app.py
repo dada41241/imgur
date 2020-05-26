@@ -85,13 +85,9 @@ def handle_message(event):
     print("event.message.text:", event.message.text)
     
     if event.message.text == "早安":
-        client = ImgurClient('18f064544f219ac', 'b17f2b3ef24f98c4e3cce9424ef0b1b7173ef642')
-        images = client.get_album_images('qpPMzY9')
-        index = random.randint(0, len(images) - 1)
-        url = images[index].link
         image_message = ImageSendMessage(
-            original_content_url=url,
-            preview_image_url=url
+            original_content_url='https://i.imgur.com/kZD28Qo.gif',
+            preview_image_url='https://i.imgur.com/kZD28Qo.gif'
         )
         
         line_bot_api.reply_message(
