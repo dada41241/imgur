@@ -85,7 +85,7 @@ def handle_message(event):
     print("event.message.text:", event.message.text)
     
     if event.message.text == "早安":
-        image_message = VideoSendMessage(
+        image_message = ImageSendMessage(
             original_content_url='https://i.imgur.com/kZD28Qo.gif',
             preview_image_url='https://i.imgur.com/kZD28Qo.gif'
         )
@@ -100,7 +100,7 @@ def handle_message(event):
         images = client.get_album_images('k7Z38KG')
         index = random.randint(0, len(images) - 1)
         url = images[index].link
-        image_message1 = VideoSendMessage(
+        image_message1 = ImageSendMessage(
             original_content_url=url,
             preview_image_url=url
         )
