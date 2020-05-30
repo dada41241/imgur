@@ -119,47 +119,57 @@ def handle_message(event):
     
     if event.message.text == "晚安":
         client = ImgurClient('18f064544f219ac', 'b17f2b3ef24f98c4e3cce9424ef0b1b7173ef642')
-        images = client.get_album_images('daOzv5n')
+        images = client.get_album_images('k7Z38KG')
         index = random.randint(0, len(images) - 1)
         url = images[index].link
-        image_message = ImageSendMessage(
-            original_content_url=url,
-            preview_image_url=url
-        )
-        imagemap_message = ImagemapSendMessage(
-        base_url='https://i.imgur.com/GVQEahm.jpg?1',
-        alt_text='this is an imagemap',
-        base_size=BaseSize(height=1040, width=1040),
-        video=video(
-            original_content_url='https://example.com/video.mp4',
-            preview_image_url='https://example.com/video_preview.jpg',
-            area=ImagemapArea(
-                x=0, y=0, width=1040, height=585
-            ),
-            external_link=ExternalLink(
-                link_uri='https://example.com/see_more.html',
-                label='See More',
-            ),
-        ),
-        actions=[
-            URIImagemapAction(
-                link_uri='https://hello888.space',
-                area=ImagemapArea(
-                    x=0, y=0, width=520, height=1040
-                )
-            ),
-            MessageImagemapAction(
-                text='hello888 is good',
-                area=ImagemapArea(
-                    x=520, y=0, width=520, height=1040
-                )
+        message = TemplateSendMessage(
+            alt_text='Carousel template',
+            template=CarouselTemplate(
+                columns=[
+                    CarouselColumn(
+                        thumbnail_image_url='https://example.com/item1.jpg',
+                        title='this is menu1',
+                        text='description1',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback1',
+                                text='postback text1',
+                                data='action=buy&itemid=1'
+                            ),
+                            MessageTemplateAction(
+                                label='message1',
+                                text='message text1'
+                            ),
+                            URITemplateAction(
+                                label='uri1',
+                                uri='http://example.com/1'
+                            )
+                        ]
+                    ),
+                    CarouselColumn(
+                        thumbnail_image_url='https://example.com/item2.jpg',
+                        title='this is menu2',
+                        text='description2',
+                        actions=[
+                            PostbackTemplateAction(
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
+                            MessageTemplateAction(
+                                label='message2',
+                                text='message text2'
+                            ),
+                            URITemplateAction(
+                                label='uri2',
+                                uri='http://example.com/2'
+                            )
+                        ]
+                    )
+                ]
             )
-        ]
-    )
-        line_bot_api.reply_message(
-            event.reply_token, imagemap_message)
-                                                        
-        return 0
+        )
+        line_bot_api.reply_message(event.reply_token, message)
     
     
     
