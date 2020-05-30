@@ -127,7 +127,7 @@ def handle_message(event):
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        thumbnail_image_url='https://example.com/item1.jpg',
+                        thumbnail_image_url='https://i.imgur.com/JIlpUVl.jpg',
                         title='this is menu1',
                         text='description1',
                         actions=[
@@ -147,7 +147,7 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url='https://example.com/item2.jpg',
+                        thumbnail_image_url='https://i.imgur.com/NE0VI7N.jpg',
                         title='this is menu2',
                         text='description2',
                         actions=[
