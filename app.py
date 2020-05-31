@@ -127,7 +127,7 @@ def handle_message(event):
             template=CarouselTemplate(
                 columns=[
                     CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/JIlpUVl.jpg',
+                        thumbnail_image_url=url,
                         title='this is menu1',
                         text='description1',
                         actions=[
@@ -147,10 +147,17 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        thumbnail_image_url='https://i.imgur.com/NE0VI7N.jpg',
+                        index = random.randint(0, len(images) - 1)
+                        url = images[index].link
+                        thumbnail_image_url=url,
                         title='每日一笑',
                         text='越活越健康',
                         actions=[
+                            PostbackTemplateAction(
+                                label='笑',
+                                text='笑起來',
+                                data='action=buy&itemid=1'
+                            
 
                             MessageTemplateAction(
                                 label='message2',
