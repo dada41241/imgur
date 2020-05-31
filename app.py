@@ -148,21 +148,17 @@ def handle_message(event):
                     ),
                     CarouselColumn(
                         thumbnail_image_url='https://i.imgur.com/NE0VI7N.jpg',
-                        title='this is menu2',
-                        text='description2',
+                        title='每日一笑',
+                        text='越活越健康',
                         actions=[
-                            PostbackTemplateAction(
-                                label='postback2',
-                                text='postback text2',
-                                data='action=buy&itemid=2'
-                            ),
+
                             MessageTemplateAction(
                                 label='message2',
                                 text='message text2'
                             ),
                             URITemplateAction(
                                 label='uri2',
-                                uri='http://example.com/2'
+                                uri='https://hello888.space/?page_id=64'
                             )
                         ]
                     )
