@@ -120,6 +120,8 @@ def handle_message(event):
     if event.message.text == "晚安":
         client = ImgurClient('18f064544f219ac', 'b17f2b3ef24f98c4e3cce9424ef0b1b7173ef642')
         images = client.get_album_images('k7Z38KG')
+        index = random.randint(0, len(images) - 1)
+        url = images[index].link
         message = TemplateSendMessage(
             alt_text='Carousel template',
             template=CarouselTemplate(
