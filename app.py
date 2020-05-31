@@ -125,10 +125,10 @@ def handle_message(event):
                 columns=[
                     CarouselColumn(
                         client = ImgurClient('18f064544f219ac', 'b17f2b3ef24f98c4e3cce9424ef0b1b7173ef642')
-                        images = client.get_album_images('k7Z38KG')
-                        index = random.randint(0, len(images) - 1)
-                        url = images[index].link
-                        thumbnail_image_url='url',
+                        photo = client.get_album_images('k7Z38KG')
+                        index = random.randint(0, len(photo) - 1)
+                        link = images[index].link
+                        thumbnail_image_url='link',
                         title='this is menu1',
                         text='description1',
                         actions=[
