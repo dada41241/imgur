@@ -128,7 +128,7 @@ def handle_message(event):
                         images = client.get_album_images('k7Z38KG')
                         index = random.randint(0, len(images) - 1)
                         url = images[index].link
-                        thumbnail_image_url=url,
+                        thumbnail_image_url='https://example.com/item1.jpg',
                         title='this is menu1',
                         text='description1',
                         actions=[
@@ -148,27 +148,22 @@ def handle_message(event):
                         ]
                     ),
                     CarouselColumn(
-                        client = ImgurClient('18f064544f219ac', 'b17f2b3ef24f98c4e3cce9424ef0b1b7173ef642')
-                        images = client.get_album_images('k7Z38KG')
-                        index = random.randint(0, len(images) - 1)
-                        url = images[index].link
-                        thumbnail_image_url=url,
-                        title='每日一笑',
-                        text='越活越健康',
+                        thumbnail_image_url='https://example.com/item2.jpg',
+                        title='this is menu2',
+                        text='description2',
                         actions=[
                             PostbackTemplateAction(
-                                label='笑',
-                                text='笑起來',
-                                data='action=buy&itemid=1'
-                            
-
+                                label='postback2',
+                                text='postback text2',
+                                data='action=buy&itemid=2'
+                            ),
                             MessageTemplateAction(
                                 label='message2',
                                 text='message text2'
                             ),
                             URITemplateAction(
                                 label='uri2',
-                                uri='https://hello888.space/?page_id=64'
+                                uri='http://example.com/2'
                             )
                         ]
                     )
