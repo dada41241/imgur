@@ -128,7 +128,7 @@ def handle_message(event):
                 columns=[
                     CarouselColumn(
 
-                        thumbnail_image_url='https://example.com/item1.jpg',
+                        thumbnail_image_url='url',
                         title='this is menu1',
                         text='description1',
                         actions=[
