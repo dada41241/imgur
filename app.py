@@ -186,14 +186,14 @@ def handle_message(event):
             alt_text='this is an imagemap',
             base_size=BaseSize(height=1040, width=1040),
             actions=[
-                URIImagemapAction(
-                    link_uri='https://example.com/',
+                MessageImagemapAction(
+                    text='早安',
                     area=ImagemapArea(
                         x=0, y=0, width=520, height=520
                     )
                 ),
                 MessageImagemapAction(
-                    text='hello',
+                    text='晚安',
                     area=ImagemapArea(
                         x=520, y=0, width=520, height=520
                     )
