@@ -129,12 +129,16 @@ def handle_message(event):
                         text='description1',
                         actions=[
                             PostbackTemplateAction(
-                                label='postback1',
+                                label='早安',
                                 text='postback text1',
                                 data='action=buy&itemid=1'
                             ),
                             MessageTemplateAction(
-                                label='message1',
+                                label='午安',
+                                text='message text1'
+                            ),
+                            MessageTemplateAction(
+                                label='晚安',
                                 text='message text1'
                             ),
                             URITemplateAction(
