@@ -185,16 +185,7 @@ def handle_message(event):
             base_url='https://i.imgur.com/7huqw3t.png',
             alt_text='this is an imagemap',
             base_size=BaseSize(height=1040, width=1040),
-            video=video(
-                original_content_url='https://example.com/video.mp4',
-                preview_image_url='https://i.imgur.com/7huqw3t.png',
-                area=ImagemapArea(
-                    x=0, y=0, width=1040, height=585
-                ),
-                external_link=ExternalLink(
-                    link_uri='https://example.com/see_more.html',
-                    label='See More',
-                ),
+
             ),
             actions=[
                 URIImagemapAction(
