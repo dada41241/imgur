@@ -182,7 +182,7 @@ def handle_message(event):
     
     if event.message.text == "Mariona":
         message = ImagemapSendMessage(
-            base_url='https://example.com/base',
+            base_url='https://i.imgur.com/7huqw3t.png',
             alt_text='this is an imagemap',
             base_size=BaseSize(height=1040, width=1040),
             actions=[
