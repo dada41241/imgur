@@ -181,14 +181,37 @@ def handle_message(event):
     
     
     if event.message.text == "Mariona":
-        from random import choice
-        mottos2 = [1, 2, 3, 4, 5]
-        line_bot_api.reply_message(
-            event.reply_token, 
-                TextSendMessage(text=random.choice(mottos2))
+        imagemap_message = ImagemapSendMessage(
+            base_url='https://example.com/base',
+            alt_text='this is an imagemap',
+            base_size=BaseSize(height=1040, width=1040),
+            video=Video(
+                original_content_url='https://example.com/video.mp4',
+                preview_image_url='https://i.imgur.com/7huqw3t.png',
+                area=ImagemapArea(
+                    x=0, y=0, width=1040, height=585
+                ),
+                external_link=ExternalLink(
+                    link_uri='https://example.com/see_more.html',
+                    label='See More',
+                ),
+            ),
+            actions=[
+                URIImagemapAction(
+                    link_uri='https://example.com/',
+                    area=ImagemapArea(
+                        x=0, y=0, width=520, height=1040
+                    )
+                ),
+                MessageImagemapAction(
+                    text='hello',
+                    area=ImagemapArea(
+                        x=520, y=0, width=520, height=1040
+                    )
+                )
+            ]
         )
-        return 0
-    
+
     
         
  
