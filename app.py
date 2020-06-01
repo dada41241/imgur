@@ -182,10 +182,10 @@ def handle_message(event):
     
     if event.message.text == "Mariona":
         imagemap_message = ImagemapSendMessage(
-            base_url='https://example.com/base',
+            base_url='https://i.imgur.com/7huqw3t.png',
             alt_text='this is an imagemap',
             base_size=BaseSize(height=1040, width=1040),
-            video=Video(
+            video=video(
                 original_content_url='https://example.com/video.mp4',
                 preview_image_url='https://i.imgur.com/7huqw3t.png',
                 area=ImagemapArea(
