@@ -182,32 +182,32 @@ def handle_message(event):
     
     if event.message.text == "Mariona":
         message = ImagemapSendMessage(
-            base_url='https://i.imgur.com/llTrB7s.png',
+            base_url='https://i.imgur.com/LT8bBZX.png',
             alt_text='this is an imagemap',
-            base_size=BaseSize(height=800, width=800),
+            base_size=BaseSize(height=800, width=1040),
             actions=[
                 MessageImagemapAction(
                     text='早安',
                     area=ImagemapArea(
-                        x=0, y=0, width=400, height=400
+                        x=0, y=0, width=520, height=400
                     )
                 ),
                 MessageImagemapAction(
                     text='午安',
                     area=ImagemapArea(
-                        x=400, y=0, width=400, height=400
+                        x=520, y=0, width=520, height=400
                     )
                 ),
                 MessageImagemapAction(
                     text='晚安',
                     area=ImagemapArea(
-                        x=0, y=400, width=400, height=400
+                        x=0, y=400, width=520, height=400
                     )
                 ),
                 MessageImagemapAction(
                     text='週末',
                     area=ImagemapArea(
-                        x=400, y=400, width=400, height=400
+                        x=520, y=400, width=520, height=400
                     )
                 )
             ]
