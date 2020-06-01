@@ -193,6 +193,18 @@ def handle_message(event):
                     )
                 ),
                 MessageImagemapAction(
+                    text='午安',
+                    area=ImagemapArea(
+                        x=0, y=520, width=520, height=520
+                    )
+                ),
+                MessageImagemapAction(
+                    text='假日',
+                    area=ImagemapArea(
+                        x=520, y=520, width=520, height=520
+                    )
+                ),
+                MessageImagemapAction(
                     text='晚安',
                     area=ImagemapArea(
                         x=520, y=0, width=520, height=520
