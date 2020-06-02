@@ -182,39 +182,51 @@ def handle_message(event):
     
     if event.message.text == "Mariona":
         message = ImagemapSendMessage(
-            base_url='https://i.imgur.com/LT8bBZX.png',
+            base_url='https://i.imgur.com/Y3Ld67O.png',
             alt_text='this is an imagemap',
-            base_size=BaseSize(height=800, width=1040),
+            base_size=BaseSize(height=1040, width=1040),
             actions=[
                 MessageImagemapAction(
                     text='早安',
                     area=ImagemapArea(
-                        x=0, y=0, width=520, height=400
+                        x=0, y=0, width=520, height=520
                     )
                 ),
                 MessageImagemapAction(
                     text='午安',
                     area=ImagemapArea(
-                        x=520, y=0, width=520, height=400
+                        x=520, y=0, width=520, height=520
                     )
                 ),
                 MessageImagemapAction(
                     text='晚安',
                     area=ImagemapArea(
-                        x=0, y=400, width=520, height=400
+                        x=0, y=520, width=520, height=520
                     )
                 ),
                 MessageImagemapAction(
                     text='週末',
                     area=ImagemapArea(
-                        x=520, y=400, width=520, height=400
+                        x=520, y=520, width=520, height=520
                     )
                 )
             ]
         )
         line_bot_api.reply_message(event.reply_token, message)
         
- 
+        
+    if event.message.text == "每日一笑":
+        target_url = ['https://www.youtube.com/user/AFVofficial/videos', 'https://www.youtube.com/user/failarmy/videos']
+        rs = requests.session()
+        res = rs.get(target_url, verify=False)
+        soup = BeautifulSoup(res.text, 'html.parser')
+        seqs = ['https://www.youtube.com{}'.format(data.find('a')['href']) for data in soup.select('.yt-lockup-title')]
+        line_bot_api.reply_message(
+            event.reply_token, [
+                TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)]),
+                TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)])
+            ])
+        return 0
 
 @app.route('/')
 
