@@ -216,9 +216,7 @@ def handle_message(event):
         
         
     if event.message.text == "每日一笑":
-
-        urls = ["https://www.youtube.com/user/failarmy/videos",
-        "https://www.youtube.com/user/overboardhumor/videos"]
+        urls = ["https://www.youtube.com/user/failarmy/videos", "https://www.youtube.com/user/overboardhumor/videos"]
         all_product = []
         for index,url in enumerate(urls):
         html = requests.get(url).text
