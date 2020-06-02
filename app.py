@@ -219,16 +219,16 @@ def handle_message(event):
         urls = ["https://www.youtube.com/user/failarmy/videos", "https://www.youtube.com/user/overboardhumor/videos"]
         all_product = []
         for index,url in enumerate(urls):
-        html = requests.get(url).text
-        soup = BeautifulSoup(html, "html.parser")
-        rs = requests.session()
-        seqs = ['https://www.youtube.com{}'.format(data.find('a')['href']) for data in soup.select('.yt-lockup-title')]
-        line_bot_api.reply_message(
-            event.reply_token, [
-                TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)]),
-                TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)])
-            ])
-        return 0
+            html = requests.get(url).text
+            soup = BeautifulSoup(html, "html.parser")
+            rs = requests.session()
+            seqs = ['https://www.youtube.com{}'.format(data.find('a')['href']) for data in soup.select('.yt-lockup-title')]
+            line_bot_api.reply_message(
+                event.reply_token, [
+                    TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)]),
+                    TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)])
+                ])
+            return 0
 
 
 @app.route('/')
