@@ -215,18 +215,16 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token, message)
         
         
-    if event.message.text == "每日一笑":
+    if event.message.text == "觸電網-youtube":
         target_url = 'https://www.youtube.com/user/truemovie1/videos'
         rs = requests.session()
         res = rs.get(target_url, verify=False)
         soup = BeautifulSoup(res.text, 'html.parser')
-        seqs = ['https://www.youtube.com{}'.format(data.find('a')['href']) for data in soup.select('lockup')]
-            line_bot_api.reply_message(
-                event.reply_token, [
-                    TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)]),
-                    TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)])
-                ])
-            return 0
+        seqs = ['https://www.youtube.com{}'.format(data.find('a')['href']) for data in soup.select('.yt-lockup-title')]
+        line_bot_api.reply_message(
+            event.reply_token, [
+                TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)]),
+                TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)])
 
 
 @app.route('/')
