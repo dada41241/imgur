@@ -216,13 +216,11 @@ def handle_message(event):
         
         
     if event.message.text == "每日一笑":
-        urls = ["https://www.youtube.com/user/failarmy/videos", "https://www.youtube.com/user/overboardhumor/videos"]
-        all_product = []
-        for index,url in enumerate(urls):
-            html = requests.get(url).text
-            soup = BeautifulSoup(html, "html.parser")
-            rs = requests.session()
-            seqs = ['https://www.youtube.com{}'.format(data.find('a')['href']) for data in soup.select('.yt-lockup-title')]
+        target_url = 'https://www.youtube.com/user/truemovie1/videos'
+        rs = requests.session()
+        res = rs.get(target_url, verify=False)
+        soup = BeautifulSoup(res.text, 'html.parser')
+        seqs = ['https://www.youtube.com{}'.format(data.find('a')['href']) for data in soup.select('lockup')]
             line_bot_api.reply_message(
                 event.reply_token, [
                     TextSendMessage(text=seqs[random.randint(0, len(seqs) - 1)]),
