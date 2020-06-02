@@ -216,7 +216,7 @@ def handle_message(event):
         
         
     if event.message.text == "每日一笑":
-        target_url = ['https://www.youtube.com/user/AFVofficial/videos', 'https://www.youtube.com/user/failarmy/videos']
+        target_url = 'https://www.youtube.com/user/failarmy/videos'
         rs = requests.session()
         res = rs.get(target_url, verify=False)
         soup = BeautifulSoup(res.text, 'html.parser')
