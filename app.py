@@ -81,6 +81,19 @@ def callback():
 
     return 'OK'
 
+def panx():
+    target_url = 'https://panx.asia/'
+    print('Start parsing ptt hot....')
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    soup = BeautifulSoup(res.text, 'html.parser')
+    content = ""
+    for data in soup.select('div.container div.row div.desc_wrap h2 a'):
+        title = data.text
+        link = data['href']
+        content += '{}\n{}\n\n'.format(title, link)
+    return content
+
 
 
 # 處理訊息
@@ -88,23 +101,14 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
     
 def handle_message(event):
-	print("event.reply_token:", event.reply_token)
-	print("event.message.text:", event.message.text)
+    print("event.reply_token:", event.reply_token)
+    print("event.message.text:", event.message.text)
     
-
-	if event.message.text == "ettoday":
-		target_url = 'https://www.ettoday.net/news/realtime-hot.htm'
-		rs = requests.session()
-		res = rs.get(target_url, verify=False)
-		soup = BeautifulSoup(res.text, 'html.parser')
-		for data in soup.select('div.part_pictxt_3 div.piece.clearfix h3 a'):
-			title = data.text
-			link = data['href']
-			ettoday_content = '{}\n{}\n\n'.format(title, link)
-		line_bot_api.reply_message(
-			event.reply_token,
-			TextSendMessage(text=ettoday_content))
-		return 0                
+    if event.message.text == "PanX泛科技":
+        content = panx()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))        
     
         
  
