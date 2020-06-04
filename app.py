@@ -79,21 +79,31 @@ def callback():
 # 處理訊息
 
 @handler.add(MessageEvent, message=TextMessage)
+def ettoday():
+    target_url = 'https://www.ettoday.net/news/realtime-hot.htm'
+    print('Start parsing ptt hot....')
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    soup = BeautifulSoup(res.text, 'html.parser')
+    content = ""
+    for data in soup.select('div.part_pictxt_3 div.piece.clearfix h3 a'):
+        title = data.text
+        link = data['href']
+        print(title)
+        content += '{}\n{}\n\n'.format(title, link)
+    return content
     
 def handle_message(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
     
-    if event.message.text == "早安":
-        image_message = ImageSendMessage(
-            original_content_url='https://i.imgur.com/kZD28Qo.gif',
-            preview_image_url='https://i.imgur.com/kZD28Qo.gif'
-        )
-        
+    if event.message.text == "ettoday":
+        content = ettoday()
         line_bot_api.reply_message(
-            event.reply_token, image_message)
-                                                        
+            event.reply_token,
+            TextSendMessage(text=content))
         return 0
+    
     
     if event.message.text == "午安":
         client = ImgurClient('18f064544f219ac', 'b17f2b3ef24f98c4e3cce9424ef0b1b7173ef642')
@@ -117,64 +127,8 @@ def handle_message(event):
                                                         
         return 0
     
-    if event.message.text == "晚安":
-
-        message = TemplateSendMessage(
-            alt_text='Carousel template',
-            template=CarouselTemplate(
-                columns=[
-                    CarouselColumn(
-                        thumbnail_image_url='https://example.com/item2.jpg',
-                        title='this is menu1',
-                        text='description1',
-                        actions=[
-                            PostbackTemplateAction(
-                                label='早安',
-                                text='postback text1',
-                                data='action=buy&itemid=1'
-                            ),
-                            MessageTemplateAction(
-                                label='午安',
-                                text='message text1'
-                            ),
-                            MessageTemplateAction(
-                                label='晚安',
-                                text='message text1'
-                            ),
-                            URITemplateAction(
-                                label='uri1',
-                                uri='http://example.com/1'
-                            )
-                        ]
-                    ),
-                    CarouselColumn(
-                        thumbnail_image_url='https://example.com/item2.jpg',
-                        title='this is menu2',
-                        text='description2',
-                        actions=[
-                            PostbackTemplateAction(
-                                label='postback2',
-                                text='postback text2',
-                                data='action=buy&itemid=2'
-                            ),
-                            MessageTemplateAction(
-                                label='message2',
-                                text='message text2'
-                            ),
-                            URITemplateAction(
-                                label='uri2',
-                                uri='http://example.com/2'
-                            )
-                        ]
-                    )
-                ]
-            )
-        )
-        line_bot_api.reply_message(event.reply_token, message)
     
-    
-    
-    
+ 
     
     
     
