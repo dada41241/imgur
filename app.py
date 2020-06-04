@@ -105,12 +105,20 @@ def handle_message(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
     
-    if event.message.text == "PanX泛科技":
-        content = panx()
+        target_url = 'https://www.ettoday.net/news/realtime-hot.htm'
+        rs = requests.session()
+        res = rs.get(target_url, verify=False)
+        soup = BeautifulSoup(res.text, 'html.parser')
+
+        for data in soup.select('div.part_pictxt_3 div.piece.clearfix h3 a'):
+            title = data.text
+            link = data['href']
+            ettoday_content = '{}\n{}\n\n'.format(title, link)
+        if event.message.text == "ettoday":
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text=content))
-        return 0
+            TextSendMessage(text=ettoday_content))
+        return 0                
     
         
  
