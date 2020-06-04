@@ -57,13 +57,14 @@ client = ImgurClient('18f064544f219ac', 'b17f2b3ef24f98c4e3cce9424ef0b1b7173ef64
 
 @app.route("/callback", methods=['POST'])
 
-def ettoday():
-    target_url = 'https://www.ettoday.net/news/realtime-hot.htm'
+def panx():
+    target_url = 'https://panx.asia/'
+    print('Start parsing ptt hot....')
     rs = requests.session()
     res = rs.get(target_url, verify=False)
     soup = BeautifulSoup(res.text, 'html.parser')
     content = ""
-    for data in soup.select('div.part_pictxt_3 div.piece.clearfix h3 a'):
+    for data in soup.select('div.container div.row div.desc_wrap h2 a'):
         title = data.text
         link = data['href']
         content += '{}\n{}\n\n'.format(title, link)
@@ -104,13 +105,12 @@ def handle_message(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
     
-    if event.message.text == "ettoday":
-        content = ettoday()
+    if event.message.text == "PanX泛科技":
+        content = panx()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
         return 0
-
     
         
  
