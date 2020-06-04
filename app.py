@@ -3,8 +3,8 @@ import re
 import random
 from random import choice
 
-import random
- 
+import urllib3
+urllib3.disable_warnings() 
         
        
 
